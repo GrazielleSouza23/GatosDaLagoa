@@ -33,25 +33,25 @@ Este projeto foi desenvolvido **como trabalho voluntário**, sem custos para a O
 
 ## ✨ Funcionalidades Principais
 
-### Área Pública
-- **Página Inicial (`index.php`)**
-- **Adoção (`index.php#adocao`)** – formulário de adoção  
-- **Quem Somos (`pages/QuemSomos.php`)**
-- **Galeria (`pages/Galeria.php`)**
-- **Doações (`pages/Doacoes.php`)**
-- **Voluntariado (`pages/Voluntariado.php`)**
-- **Eventos (`pages/Eventos.php`)**
-- **Contato (`pages/Contato.php`)**
+### Área Pública (Módulos de Visualização)
+*   **Página Inicial (`index.php`):** Arquivo principal de entrada da aplicação.
+*   **Adoção (`index.php#adocao`):** Seção na página inicial onde é disponibilizado um formulário de adoção (para quem tiver interesse em adotar um gato).
+*   **Quem Somos (`pages/QuemSomos.php`):** Módulo de apresentação institucional da ONG.
+*   **Galeria (`pages/Galeria.php`):** Módulo de exibição de imagens de gatos **já adotados** (histórias de sucesso), conforme o objetivo de divulgação do trabalho da ONG.
+*   **Doações (`pages/Doacoes.php`):** Módulo dedicado a apresentar as formas de contribuição financeira e outras formas de ajudar (Feiras e Eventos, Tampinhas e Lacres).
+*   **Voluntariado (`pages/Voluntariado.php`):** Módulo que contém informações sobre voluntariado (para quem tem interesse em se voluntariar).
+*   **Eventos (`pages/Eventos.php`):** Módulo para a divulgação de eventos.
+*   **Contato (`pages/Contato.php`):** Módulo com informações de contato.
 
 ### Área Administrativa (`/admin`)
-- **Login (`admin/login.php`)**
-- **Dashboard (`admin/dashboard.php`)**
-- **Eventos (`admin/eventos.php`)**
-- **Galeria (`admin/galeria.php`)**
-- **Histórias (`admin/historias.php`)**
-- **Configurações (`admin/configuracoes.php`)**
-- **Perfil (`admin/perfil.php`)**
-- **Logout (`admin/logout.php`)**
+*   **Login (`admin/login.php`):** Módulo de autenticação para acesso restrito.
+*   **Dashboard (`admin/dashboard.php`):** Módulo principal da área administrativa (painel de controle).
+*   **Eventos (`admin/eventos.php`):** Módulo de gerenciamento de eventos.
+*   **Galeria (`admin/galeria.php`):** Módulo de gerenciamento da galeria de imagens.
+*   **Histórias (`admin/historias.php`):** Módulo de gerenciamento de histórias (histórias de sucesso dos gatos adotados).
+*   **Configurações (`admin/configuracoes.php`):** Módulo para ajustes e configurações do sistema (edição de textos, imagens, links).
+*   **Perfil (`admin/perfil.php`):** Módulo para gerenciamento do perfil do usuário administrador (alterar nome de usuário, e-mail, senha).
+*   **Logout (`admin/logout.php`):** Módulo de encerramento de sessão.
 
 ---
 
