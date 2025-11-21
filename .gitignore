@@ -1,0 +1,61 @@
+# ===============================
+#  GATOS DA LAGOA — .gitignore
+#  Site PHP + MySQL + Admin Panel
+# ===============================
+
+# -------------------------------
+# SISTEMA / ARQUIVOS DO WINDOWS
+# -------------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------------
+# PHP / CONFIGURAÇÕES SENSÍVEIS
+# -------------------------------
+.env
+.env.local
+.env.production
+.env.development
+
+# -------------------------------
+# LOGS / CACHE
+# -------------------------------
+*.log
+*.cache
+*.tmp
+php_errors.log
+logs/
+
+# -------------------------------
+# UPLOADS (NÃO SUBIR FOTOS)
+# -------------------------------
+assets/images/uploads/*
+
+# Permitir que o diretório exista
+!assets/images/uploads/.gitkeep
+
+# -------------------------------
+# BANCO DE DADOS
+# -------------------------------
+# Ignore apenas backups e dumps automáticos
+database/*.bak
+database/*.db
+database/*dump*.sql
+
+# -------------------------------
+# IDEs / EDITORES
+# -------------------------------
+.vscode/
+.idea/
+*.code-workspace
+
+# -------------------------------
+# COMPOSER (caso use no futuro)
+# -------------------------------
+vendor/
+composer.lock
+
+# -------------------------------
+# NODE (caso use no futuro)
+# -------------------------------
+node_modules/

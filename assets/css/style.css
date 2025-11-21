@@ -1,0 +1,2368 @@
+@charset "UTF-8";
+
+/* ===================================
+   Reset e Configurações Globais
+   =================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary: #65C5B2;
+    --color-secondary: #A8CF45;
+    --color-accent: #6CCB10;
+    --color-white: #FFFFFF;
+    --color-light: #F5F5F5;
+    --color-dark: #333333;
+    --color-gray: #666666;
+    --color-orange: #FFB74D;
+    --color-danger: #E65C5C;
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+    
+    --transition: all 0.3s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===================================
+   Header e Navegação
+   =================================== */
+.header {
+    background: var(--color-white);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 60px;
+    width: auto;
+}
+
+.nav-menu {
+    display: flex;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-link {
+    font-family: var(--font-heading);
+    font-weight: 500;
+    color: var(--color-dark);
+    transition: var(--transition);
+    position: relative;
+    padding: 8px 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    transition: var(--transition);
+    border-radius: 10px;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--color-primary);
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--color-primary);
+    border-radius: 5px;
+    transition: var(--transition);
+}
+
+/* ===================================
+   Hero Section
+   =================================== */
+.hero {
+    position: relative;
+    background: linear-gradient(135deg, #e8f8f5 0%, #f0fdf4 100%);
+    padding: 100px 0 150px;
+    overflow: hidden;
+}
+
+.hero-wave-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    z-index: 1;
+}
+
+.hero-wave-top svg {
+    width: 100%;
+    height: 100%;
+}
+
+.hero-wave-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    z-index: 1;
+}
+
+.hero-wave-bottom svg {
+    width: 100%;
+    height: 100%;
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-text {
+    animation: fadeInLeft 1s ease;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--color-dark);
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-title .highlight {
+    color: var(--color-primary);
+    position: relative;
+}
+
+.hero-description {
+    font-size: 18px;
+    color: var(--color-gray);
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 16px;
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+}
+
+.category-filter .btn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: none;
+    background: var(--color-white);
+    color: var(--color-dark);
+}
+
+.category-filter .btn.active, .category-filter .btn:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: var(--color-white);
+    box-shadow: 0 10px 30px rgba(101, 197, 178, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(101, 197, 178, 0.4);
+}
+
+.btn-secondary {
+    background: var(--color-white);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.btn-secondary:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-3px);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #e63946, #ff6b6b);
+    color: var(--color-white);
+    box-shadow: 0 10px 30px rgba(230, 57, 70, 0.3);
+}
+
+.btn-danger:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(230, 57, 70, 0.4);
+    opacity: 0.95;
+}
+
+
+.hero-image {
+    position: relative;
+    animation: fadeInRight 1s ease;
+}
+
+.hero-image-circle {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    aspect-ratio: 1;
+    border-radius: 50% 40% 60% 50%;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    animation: morphing 8s ease-in-out infinite;
+}
+
+.hero-image-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.message {
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-weight: 500;
+    margin: 15px 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Mensagem de sucesso*/
+.message.success {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: var(--color-white);
+    box-shadow: 0 10px 30px rgba(101, 197, 178, 0.3);
+}
+
+.message.success:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(101, 197, 178, 0.4);
+}
+
+/* Mensagem de erro */
+.message.error {
+    background: var(--color-white);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.message.error:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-3px);
+}
+
+
+@keyframes morphing {
+    0%, 100% {
+        border-radius: 50% 40% 60% 50%;
+    }
+    25% {
+        border-radius: 40% 60% 50% 40%;
+    }
+    50% {
+        border-radius: 60% 50% 40% 60%;
+    }
+    75% {
+        border-radius: 50% 60% 40% 50%;
+    }
+}
+
+.floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.shape-1 {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+    top: -20px;
+    right: -20px;
+    opacity: 0.6;
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    bottom: 50px;
+    left: -30px;
+    opacity: 0.5;
+    animation-delay: 2s;
+}
+
+.shape-3 {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+    top: 50%;
+    right: -50px;
+    opacity: 0.4;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate3d(0, -20px, 0) rotate(180deg);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translate3d(-50px, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translate3d(50px, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* ===================================
+   Section Headers
+   =================================== */
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    border-radius: 10px;
+}
+
+.section-subtitle {
+    font-size: 18px;
+    color: var(--color-gray);
+    margin-top: 20px;
+}
+
+/* ===================================
+   Principais Atividades
+   =================================== */
+.activities {
+    padding: 100px 0;
+    position: relative;
+    background: var(--color-white);
+}
+
+.activities-decoration {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    z-index: 0;
+    opacity: 0.3;
+}
+
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.activity-card {
+    background: var(--color-white);
+    padding: 40px 30px;
+    border-radius: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.activity-card svg {
+    display: block;
+    margin: 0 auto;
+}
+
+
+.activity-card img {
+    display: block;          /* permite centralizar com margin auto */
+    margin: 10px auto 0;     /* centraliza e dá espaçamento superior */
+    width: 200px;             /* tamanho equilibrado */
+    height: auto;            /* mantém proporção */
+    opacity: 0.95;           /* (opcional) deixa a logo mais suave */
+}
+
+
+.activity-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+    transform: scaleX(0);
+    transition: var(--transition);
+}
+
+.activity-card:hover::before {
+    transform: scaleX(1);
+}
+
+.activity-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+.activity-title {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.activity-description {
+    font-size: 16px;
+    color: var(--color-gray);
+    line-height: 1.8;
+}
+
+/* ===================================
+   Seção de Adoção
+   =================================== */
+.adoption-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #e8f8f5 0%, #f0fdf4 100%);
+}
+
+.adoption-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.adoption-image-wrapper {
+    position: relative;
+    border-radius: 40% 60% 50% 40%;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    animation: morphing 8s ease-in-out infinite;
+}
+
+.adoption-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.paw-print {
+    position: absolute;
+    font-size: 40px;
+    opacity: 0.6;
+    animation: float 4s ease-in-out infinite;
+}
+
+.paw-1 {
+    top: 10%;
+    right: -10px;
+    animation-delay: 0s;
+}
+
+.paw-2 {
+    bottom: 20%;
+    left: -10px;
+    animation-delay: 1.5s;
+}
+
+.paw-3 {
+    top: 50%;
+    right: -15px;
+    animation-delay: 3s;
+}
+
+.adoption-text {
+    padding: 20px 0;
+}
+
+.adoption-description {
+    font-size: 18px;
+    color: var(--color-gray);
+    margin-bottom: 30px;
+    line-height: 1.8;
+}
+
+.adoption-features {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.adoption-features li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 16px;
+    color: var(--color-dark);
+    margin-bottom: 15px;
+}
+
+.adoption-features svg {
+    flex-shrink: 0;
+}
+
+/* ===============================
+   Patinhas decorativas animadas
+   =============================== */
+
+/* garante que a section funcione como referência para absolute */
+.quem-somos-section {
+  position: relative;
+  overflow: visible; /* permite que as patinhas apareçam fora do container se necessário */
+}
+
+/* garante que conteúdo fique acima das patinhas */
+.quem-somos-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* contêiner das patinhas (não atrapalha clique) */
+.paw-decorations {
+  position: absolute;
+  inset: 0;
+  z-index: 1; /* atrás do conteúdo (.container tem z-index:2) */
+}
+
+
+/* cada patinha — usamos SVG inline via CSS background-image alternativa: vamos desenhar com pseudo-elemento */
+.paw {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  opacity: 0.22;
+  transform-origin: center;
+  animation-duration: 3.6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-delay: var(--delay, 0s);
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,0.08));
+}
+
+/* posicionamento por variáveis inline (--top, --left, --right) */
+.paw { top: var(--top, 30%); left: var(--left, auto); right: var(--right, auto); }
+
+/* SVG dentro da patinha usando pseudo-elemento (assim você não precisa de arquivo externo) */
+.paw::before {
+  content: "";
+  font-size: 32px;
+  color: #65C5B2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path fill="%2365C5B2" d="M32 38c-7 0-12 5-12 10s5 9 12 9 12-4 12-9-5-10-12-10z"/><circle fill="%2365C5B2" cx="13" cy="26" r="6"/><circle fill="%2365C5B2" cx="51" cy="26" r="6"/><circle fill="%2365C5B2" cx="23" cy="14" r="6"/><circle fill="%2365C5B2" cx="41" cy="14" r="6"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform-origin: center;
+  display: block;
+}
+
+/* animações — esquerda sobe com deslocamento X positivo (vai para direita), direita sobe com deslocamento X negativo (vai para esquerda) */
+.paw-left { animation-name: pawLeftMove; }
+.paw-right { animation-name: pawRightMove; }
+
+/* keyframes */
+@keyframes pawLeftMove {
+  0%   { transform: translate3d(0,0,0) scale(1) rotate(-10deg); opacity: 0.18; }
+  45%  { transform: translate3d(10px,-18px,0) scale(1.06) rotate(-2deg); opacity: 0.55; }
+  100% { transform: translate3d(0,0,0) scale(1) rotate(-10deg); opacity: 0.18; }
+}
+
+@keyframes pawRightMove {
+  0%   { transform: translate3d(0,0,0) scale(1) rotate(10deg); opacity: 0.18; }
+  45%  { transform: translate3d(-10px,-18px,0) scale(1.06) rotate(2deg); opacity: 0.55; }
+  100% { transform: translate3d(0,0,0) scale(1) rotate(10deg); opacity: 0.18; }
+}
+
+/* responsividade — reduz tamanho das patinhas em telas pequenas */
+@media (max-width: 768px) {
+  .paw { width: 30px; height: 30px; }
+  .paw::before { background-size: 90%; }
+}
+
+
+
+/* ===================================
+   Histórias de Sucesso
+   =================================== */
+.success-stories {
+    padding: 100px 0;
+    background: var(--color-white);
+    position: relative;
+}
+
+.stories-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+}
+
+.stories-wave svg {
+    width: 100%;
+    height: 100%;
+}
+
+.stories-carousel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.story-card {
+    background: var(--color-white);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.story-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.story-image {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+}
+
+.story-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.story-card:hover .story-image img {
+    transform: scale(1.1);
+}
+
+.story-content {
+    padding: 30px;
+}
+
+.story-title {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+}
+
+.story-text {
+    font-size: 16px;
+    color: var(--color-gray);
+    line-height: 1.8;
+}
+
+/* ============================
+   Galeria de Imagens (Admin)
+   ============================ */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    justify-content: center;        /* Centraliza os cards */
+    gap: 25px;
+    margin-top: 30px;
+    max-width: 1200px;              /* Limita a largura total */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.admin-gallery-item {
+    background: var(--color-white);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 280px;               /* Limita o tamanho dos quadros */
+    margin: 0 auto;
+}
+
+.admin-gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.admin-gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.gallery-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 0 20px;
+    flex-wrap: wrap;
+}
+
+.gallery-actions .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+
+    /* Corrige tamanhos inconsistentes */
+    width: 110px;             /* largura fixa (ajuste se quiser mais largo) */
+    height: 38px;             /* altura uniforme */
+    padding: 0;               /* zera o padding pra não interferir */
+    box-sizing: border-box;
+    font-weight: 500;
+}
+
+/* Alternativa mais flexível, se quiser responsivo */
+@media (max-width: 600px) {
+    .gallery-actions .btn {
+        width: 100px; /* um pouco menor em telas pequenas */
+        font-size: 13px;
+    }
+}
+
+
+/* Botão Editar */
+.gallery-actions .editar-btn {
+    background: var(--color-white);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.gallery-actions .editar-btn:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+/* Botão Remover */
+.gallery-actions .deletar-btn {
+    background: var(--color-danger);
+    color: var(--color-white);
+    border: 2px solid var(--color-danger);
+}
+
+.gallery-actions .deletar-btn:hover {
+    background: #cc4d4d;
+}
+
+/* Contêiner de filtros */
+.btn.category-filter {
+    display: flex;
+    flex-wrap: nowrap;        /* Não quebrar linha */
+    overflow-x: auto;         /* Habilita rolagem horizontal */
+    gap: 10px;                /* Espaço entre os botões */
+    padding: 10px;            /* Espaço interno */
+    -webkit-overflow-scrolling: touch; /* rolagem suave no iOS */
+}
+
+/* Botões dentro do filtro */
+.btn.category-filter .filter-btn {
+    flex: 0 0 auto;           /* Evita que encolham */
+    white-space: nowrap;       /* Evita quebra de texto */
+}
+
+/* Contêiner de filtros */
+.category-filter {
+    display: flex;
+    flex-wrap: nowrap;        /* Não quebra linha */
+    overflow-x: auto;         /* Barra de rolagem horizontal se necessário */
+    gap: 10px;                /* Espaço entre botões */
+    padding: 10px;
+    -webkit-overflow-scrolling: touch; /* rolagem suave no iOS */
+}
+
+/* Esconde barra de rolagem no Chrome/Safari */
+.category-filter::-webkit-scrollbar {
+    height: 6px;
+}
+
+.category-filter::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.2);
+    border-radius: 3px;
+}
+
+/* Botões dentro do filtro */
+.filter-btn {
+    flex: 0 0 auto;           /* Impede que encolham */
+    white-space: nowrap;       /* Não quebrar texto */
+}
+
+
+/* ===================================
+   Seção de Contato
+   =================================== */
+.contact-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #f0fdf4 0%, #e8f8f5 100%);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+.contact-description {
+    font-size: 18px;
+    color: var(--color-gray);
+    margin-bottom: 40px;
+    line-height: 1.8;
+}
+
+.contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.contact-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.contact-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #e8f8f5, #f0fdf4);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-details h4 {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 8px;
+}
+
+.contact-details p,
+.contact-details a {
+    font-size: 16px;
+    color: var(--color-gray);
+    line-height: 1.6;
+}
+
+.contact-details a:hover {
+    color: var(--color-primary);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    width: 48px;   /* tamanho final igual para todos */
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+.social-links img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+
+.social-links a:hover {
+    color: var(--color-secondary);
+}
+
+.contact-map iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+}
+
+
+/* ===================================
+   Ondulações/Ondas
+   =================================== */
+
+/* onda no topo da seção inferior — preencha com a mesma cor da seção */
+.wave-top-lower {
+  width: 100%;
+  height: 120px;       /* ajuste conforme necessário */
+  overflow: hidden;
+  line-height: 0;      /* remove gaps */
+}
+
+.wave-top-lower svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* ===================================
+   Footer
+   =================================== */
+.footer {
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    color: var(--color-white);
+    padding-top: 80px;
+    position: relative;
+}
+
+.footer-wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+}
+
+.footer-wave svg {
+    width: 100%;
+    height: 100%;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-logo {
+    max-width: 220px;        
+    height: auto;             
+    object-fit: contain;  
+    display: block;
+    margin-bottom: 20px;
+    filter: none;
+}
+
+.footer-text {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+}
+
+.footer-title {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--color-white);
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--color-primary);
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    padding: 30px 0;
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 5px;
+}
+
+.footer-cnpj {
+    font-size: 12px;
+}
+
+
+/* ===================================
+   Página de Login
+   =================================== */
+.login-page-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.login-image-panel {
+    width: 50%;
+    background: url('../images/uploads/Gato_Inicial.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    text-align: center;
+}
+
+.login-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.login-image-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-logo-img {
+    max-width: 250px;
+    margin: 0 auto 20px auto; /* Centraliza horizontalmente e mantém margem inferior */
+    display: block; /* Garante que 'margin: auto' funcione */
+}
+
+.login-image-content p {
+    font-size: 1.2rem;
+    font-family: var(--font-heading);
+}
+
+.btn-full{
+    max-width: 200px; /* Limita a largura do botão */
+    margin: 0 auto;   /* Centraliza o botão */
+    display: block;   /* Garante que o 'margin: auto' funcione */
+}
+
+.back-to-site-link {
+    display: inline-block;
+    margin-top: 30px;
+    color: var(--color-primary); /* Texto verde */
+    background: var(--color-white); /* Fundo branco */
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid var(--color-white);
+    border-radius: 50px;
+    transition: var(--transition);
+}
+
+.back-to-site-link:hover {
+    background: var(--color-primary); /* Fundo verde */
+    color: var(--color-white); /* Texto branco */
+}
+
+.login-form-panel {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-light);
+    padding: 40px;
+}
+
+.login-form-container {
+    max-width: 400px;
+    width: 100%;
+}
+
+.login-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.login-subtitle {
+    text-align: center;
+    color: var(--color-gray);
+    margin-bottom: 40px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--color-dark);
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(101, 197, 178, 0.2);
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--color-gray);
+}
+
+
+@media (max-width: 768px) {
+    .login-image-panel {
+        display: none;
+    }
+    .login-form-panel {
+        width: 100%;
+    }
+}
+
+/* ===================================
+   Formas de Voluntariado (linha zigue-zague)
+   =================================== */
+
+/* Container base */
+.process-section {
+    position: relative;
+    padding: 120px 0 160px;
+    background: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* SVG animado como linha zigue-zague */
+.process-section::after {
+    content: "";
+    position: absolute;
+    top: 67%;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    background: none;
+    z-index: 0;
+    opacity: 0.8;
+    pointer-events: none;
+    animation: drawLine 5s ease forwards;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1800' height='300' viewBox='0 0 1800 300'%3E%3Cpath d='M0 180 C300 80 600 280 900 180 C1200 80 1500 280 1800 180' fill='none' stroke='%23d2d2d2' stroke-width='3' stroke-dasharray='6 10' stroke-dashoffset='1000'%3E%3Canimate attributeName='stroke-dashoffset' from='1000' to='0' dur='3s' fill='freeze' begin='0.2s'/%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 2200px auto;
+}
+
+
+/* Etapas */
+.process-steps {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 120px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+}
+
+/* Cada etapa */
+.process-step {
+    width: 260px;
+    text-align: center;
+    position: relative;
+}
+
+.process-step img,
+.process-step svg {
+    display: block;
+    margin: 0 auto 16px;
+    width: 80px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.process-step:hover img,
+.process-step:hover svg {
+    transform: scale(1.1);
+}
+
+.process-title {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 12px;
+}
+
+.process-description {
+    font-size: 16px;
+    color: var(--color-gray);
+    line-height: 1.7;
+}
+
+/* Zigue-zague visual */
+.process-step:nth-child(odd) {
+    margin-top: -40px;
+}
+.process-step:nth-child(even) {
+    margin-top: 40px;
+}
+
+/* ===== Animação da linha ===== */
+@keyframes drawLine {
+    from {
+        opacity: 0;
+        transform: scaleX(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+/* ===== Tablets ===== */
+@media (max-width: 992px) {
+    .process-section {
+        padding: 90px 20px 120px;
+    }
+
+    .process-steps {
+        gap: 70px;
+    }
+
+    .process-step {
+        width: 45%;
+        margin-top: 0 !important;
+    }
+
+    .process-section::after {
+        top: 72%;
+        height: 200px;
+        background-size: 1600px auto;
+    }
+
+    .process-step img,
+    .process-step svg {
+        width: 70px;
+    }
+}
+
+/* ===== Celulares ===== */
+@media (max-width: 600px) {
+    .process-section {
+        padding: 70px 15px 100px;
+    }
+
+    .process-steps {
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+    }
+
+    .process-step {
+        width: 100%;
+        max-width: 340px;
+        background: var(--color-white);
+        border-radius: 18px;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+        padding: 30px 20px;
+        margin-top: 0 !important;
+        z-index: 2;
+    }
+
+    .process-step img,
+    .process-step svg {
+        width: 60px;
+        height: 60px;
+    }
+
+    .process-section::after {
+        top: 80%;
+        height: 220px;
+        background-size: 1000px auto;
+        opacity: 0.6;
+    }
+}
+
+/* ===== Telas muito pequenas ===== */
+@media (max-width: 400px) {
+    .process-section::after {
+        background-size: 800px auto;
+        top: 85%;
+        opacity: 0.4;
+    }
+}
+
+
+
+
+/* ===================================
+   Responsividade
+   =================================== */
+@media (max-width: 1024px) {
+    .hero-content,
+    .adoption-content,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .hero-title {
+        font-size: 42px;
+    }
+    
+    .section-title {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 90px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 90px);
+        background: var(--color-white);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 40px 20px;
+        transition: var(--transition);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-list {
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+    
+    .nav-link {
+        font-size: 18px;
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .hero {
+        padding: 60px 0 100px;
+    }
+    
+    .hero-title {
+        font-size: 32px;
+    }
+    
+    .hero-description {
+        font-size: 16px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+    
+    .activities-grid,
+    .stories-carousel {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 28px;
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
+    
+    .activity-title,
+    .story-title {
+        font-size: 20px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .adoption-content.alternate-layout {
+        grid-template-columns: 1fr 1fr; /* Garante que em telas grandes tenha 2 colunas */
+    }
+    .adoption-content.alternate-layout > .adoption-text {
+        order: 1; /* Texto vem primeiro */
+    }
+    .adoption-content.alternate-layout > .adoption-image {
+        order: 2; /* Imagem vem depois */
+    }
+}
+
+/* ===================================
+   Estilos para a Área Administrativa (ADMIN)
+   =================================== */
+
+/* Layout principal para o conteúdo administrativo */
+.main-content {
+    padding: 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 80vh; 
+    /* Garante que o fundo seja claro, como em Doacoes.php */
+    background-color: var(--color-light); 
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.admin-title {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    color: var(--color-dark);
+    font-weight: 600;
+}
+
+/* Estilo de Card BASE (Idêntico ao .activity-card/Doacoes.php) */
+.admin-card, .admin-form-card, .stat-item {
+    background: var(--color-white);
+    padding: 30px;
+    border-radius: 15px; /* Arredondamento do card */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05); /* Sombra suave */
+    transition: var(--transition);
+    height: 100%; 
+}
+
+.admin-card:hover, .stat-item:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px); /* Efeito de elevação leve */
+}
+
+/*Admin Usuário*/
+/* ======= Cabeçalho do administrador ======= */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+/* Card do administrador */
+.admin-user-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-shrink: 0; /* Impede que o card seja espremido */
+}
+
+.admin-user-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+}
+
+.admin-user-card img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    padding: 4px;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.25);
+}
+
+.admin-user-details {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.admin-name {
+    font-weight: 700;
+    font-size: 1rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+/* ======= Responsividade ======= */
+@media (max-width: 768px) {
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .admin-user-card {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        padding: 10px 12px;
+    }
+
+    .admin-user-details {
+        align-items: center;
+    }
+
+    .admin-name {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-user-card img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .admin-name {
+        font-size: 0.9rem;
+    }
+}
+
+
+/* Estilo para Cards de Estatísticas/Ações Rápidas */
+.stats-grid { 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-item {
+    text-align: center;
+    border-bottom: 4px solid var(--color-primary); /* Linha colorida */
+    padding: 20px;
+}
+
+.stat-item:hover {
+    border-bottom-color: var(--color-secondary);
+}
+
+.stat-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.stat-number img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+
+.stat-label {
+    font-size: 16px;
+    color: var(--color-gray);
+    font-weight: 500;
+}
+
+/* Layout de Grid para Múltiplos Cards */
+.admin-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+/* Estilo para Formulários/Configurações (um tipo de card) */
+.admin-form-card { 
+    border-left: 5px solid var(--color-secondary);
+    margin-bottom: 30px; /* Separar formulários */
+}
+
+/* ==================================================
+   Estilos de Formulários/Tabelas (Ações e Listagens)
+   ================================================== */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-gray);
+}
+
+.form-input, .form-textarea, .form-select {
+    font-family: var(--font-body);
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border color 0.3s;
+}
+
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(101, 197, 178, 0.2);
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Tabelas (para eventos.php, historias.php) */
+.admin-table-container {
+    overflow-x: auto; /* Garante a rolagem horizontal em telas pequenas */
+    margin-top: 20px;
+    background: var(--color-white);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid var(--color-primary);
+}
+
+.admin-table {
+    width: 100%;
+    min-width: 600px; /* Garante que a tabela não se "esprema" demais em celular e força a rolagem */
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 14px;
+}
+
+.admin-table th {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-dark);
+    background-color: var(--color-light);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.admin-table td{
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+.admin-table tbody tr:hover {
+    background-color: #f7fff7; /* Efeito hover suave */
+}
+
+.admin-table th.col-actions {
+    width: 200px; /* Você pode ajustar este valor (ex: 180px ou 220px) */
+}
+
+/* Estilo para a imagem do evento e história na tabela */
+.event-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 1. Estilos Base para Propriedades Comuns e Responsividade (Mobile First) */
+.admin-table .edit-btn, 
+.admin-table .delete-btn {
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    display: block; 
+    width: 100%;
+    margin: 5px 0;
+    text-align: center;
+}
+
+
+/* 2. Cores: EDITAR (usa .edit-btn) - VERDE */
+.admin-table .edit-btn {
+    /* Cor principal do tema (VERDE) */
+    background: var(--color-white);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.admin-table .edit-btn:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: translateY(-1px);
+}
+
+/* 3. Cores: REMOVER (usa .delete-btn) - VERMELHO */
+.btn.delete-btn { 
+    /* Cor de perigo/alerta (VERMELHO) */
+    background: var(--color-danger); 
+    color: var(--color-white);
+    border: 2px solid var(--color-danger);
+    box-shadow: 0 5px 15px rgba(230, 92, 92, 0.3);
+}
+
+.admin-table .btn.delete-btn:hover {
+    background: #cc4d4d;
+    color: var(--color-white);
+    box-shadow: 0 5px 15px rgba(230, 92, 92, 0.5);
+    transform: translateY(-1px);
+}
+
+/* Estilos de responsividade */
+@media (max-width: 768px) {
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admin-title {
+        margin-bottom: 15px;
+    }
+    
+    .stats-grid,
+    .admin-card-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .admin-card,
+    .admin-form-card {
+        padding: 20px;
+    }
+}
+
+
+/* ===================================
+   Próximos Eventos
+   =================================== */
+.eventos-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding-top: 40px;
+}
+
+.evento-card {
+    background: var(--color-white);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    width: 340px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.evento-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+}
+
+.evento-imagem {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.evento-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.evento-card:hover .evento-imagem img {
+    transform: scale(1.08);
+}
+
+.evento-conteudo {
+    padding: 25px;
+}
+
+.evento-titulo {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.evento-texto {
+    font-size: 16px;
+    color: var(--color-gray);
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .evento-card {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+
+/* ===================================
+   Ajuste: Botões do formulário de eventos
+   =================================== */
+.eventos-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* Garante tamanho uniforme para todos os botões */
+.eventos-actions .btn {
+    min-width: 200px;
+    text-align: center;
+    justify-content: center;
+}
+
+/* No mobile, ocupa toda a largura */
+@media (max-width: 768px) {
+    .eventos-actions .btn {
+        width: 100%;
+        min-width: unset;
+    }
+}
+
+
+/* ===================================
+   Ajuste: Imagens no Configurações do Admin
+   =================================== */
+    /* Limita o tamanho das imagens de pré-visualização */
+    .preview-image {
+        display: block;
+        max-width: 220px;      /* largura máxima da imagem */
+        max-height: 150px;     /* altura máxima */
+        width: auto;           /* mantém proporção */
+        height: auto;
+        margin-top: 10px;      /* espaçamento abaixo do input */
+        border-radius: 8px;    /* cantos arredondados */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* sombra suave */
+        object-fit: cover;     /* evita distorções */
+        background-color: #f8f8f8;
+    }
+
+    /* Deixa o bloco mais organizado */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    /* Caso queira centralizar as imagens */
+    .form-group img.preview-image {
+        margin-left: 0;
+    }
+
+    /* Responsivo — em telas pequenas as imagens reduzem */
+    @media (max-width: 768px) {
+        .preview-image {
+            max-width: 150px;
+            max-height: 100px;
+        }
+    }
+
+
+/* ===================================
+   Página de Erro 404
+   =================================== */
+.error-section {
+    position: relative;
+    overflow: hidden; /* já está */
+    min-height: 100vh; /* ocupa toda a tela */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e8f8f5 0%, #f0fdf4 100%);
+    padding: 0;
+}
+
+.main-content.error-page {
+    padding: 0;
+    background: none; /* evita sobreposição do fundo do admin */
+    min-height: unset; /* remove o 80vh herdado */
+}
+
+
+.error-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 50%, rgba(101, 197, 178, 0.1) 0%, transparent 70%),
+                radial-gradient(circle at 70% 40%, rgba(168, 207, 69, 0.12) 0%, transparent 60%);
+    z-index: 0;
+}
+
+.error-section::after {
+    content: "🐾";
+    position: absolute;
+    font-size: 80px;
+    bottom: 20px;
+    right: 40px;
+    opacity: 0.1;
+    transform: rotate(-20deg);
+}
+
+
+.error-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    background: var(--color-white);
+    border-radius: 25px;
+    padding: 60px 40px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    animation: fadeInUp 1s ease;
+    text-align: center;
+}
+
+.error-content a.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.error-content a.btn:hover {
+    background-color: var(--color-secondary);
+    color: #fff;
+}
+
+.error-code {
+    font-family: var(--font-heading);
+    font-size: 120px;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+    line-height: 1;
+    text-shadow: 0 6px 10px rgba(101, 197, 178, 0.2);
+}
+
+.error-title {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 15px;
+}
+
+.error-message {
+    font-size: 18px;
+    color: var(--color-gray);
+    margin-bottom: 20px;
+}
+
+.error-suggestion {
+    font-size: 16px;
+    color: var(--color-gray);
+    margin-bottom: 30px;
+    animation: fadeInUp 1s ease 0.3s forwards;
+    opacity: 0;
+}
+
+
+.error-links {
+    margin-top: 25px;
+    font-size: 15px;
+    color: var(--color-primary);
+}
+
+.error-links a {
+    color: var(--color-primary);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.error-links a:hover {
+    color: var(--color-secondary);
+}
+
+/* Animação suave */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .error-code {
+        font-size: 90px;
+    }
+
+    .error-title {
+        font-size: 26px;
+    }
+
+    .error-content {
+        padding: 40px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .error-content {
+        padding: 30px 15px;
+    }
+    .error-code {
+        font-size: 70px;
+    }
+    .error-title {
+        font-size: 22px;
+    }
+}
+
+/* ===================================
+   Responsividade
+   =================================== */
+
+/* Breakpoint para Tablets e Telas Médias (Menu Hamburger e Colapso Principal) */
+@media (max-width: 1024px) {
+    /* 1. ATIVAÇÃO DO MENU HAMBURGER (Movido de 768px para 1024px) */
+    .nav-menu {
+        position: fixed;
+        top: 90px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 90px);
+        background: var(--color-white);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 40px 20px;
+        transition: var(--transition);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        z-index: 999; 
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-list {
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+    
+    .nav-link {
+        font-size: 18px;
+        padding: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    /* 2. Colapso de Layouts de 2 Colunas para 1 (Já estava aqui, mas garante) */
+    .hero-content,
+    .adoption-content,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    /* 3. Colapso de Grids Menores e Ajustes de Fonte (Movidos ou mantidos) */
+    .hero-title {
+        font-size: 42px;
+    }
+    
+    .section-title {
+        font-size: 36px;
+    }
+
+    .activities-grid,
+    .stories-carousel {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Breakpoint para Celulares e Pequenos Dispositivos */
+@media (max-width: 768px) {
+    /* Ajustes de espaçamento e tamanho de fonte para celular */
+    .hero {
+        padding: 60px 0 100px;
+    }
+    
+    .hero-title {
+        font-size: 32px;
+    }
+    
+    .hero-description {
+        font-size: 16px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+    
+    /* Adicionado: Reordena a imagem para aparecer DEPOIS do texto no mobile */
+    .hero-text,
+    .adoption-text {
+        order: 1;
+        text-align: center;
+    }
+    
+    .hero-image,
+    .adoption-image-wrapper {
+        order: 2;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+}
+
+/* Breakpoint para Celulares (muito pequenos) */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 28px;
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
+    
+    .activity-title,
+    .story-title {
+        font-size: 20px;
+    }
+}
+
+/* Regra para Layout Alternativo em Telas Grandes (Mantida) */
+@media (min-width: 1025px) {
+    .adoption-content.alternate-layout {
+        grid-template-columns: 1fr 1fr;
+    }
+    .adoption-content.alternate-layout > .adoption-text {
+        order: 1;
+    }
+    .adoption-content.alternate-layout > .adoption-image {
+        order: 2;
+    }
+}
+
