@@ -112,3 +112,135 @@ document.addEventListener('keydown', e => {
         closeImageModal();
     }
 });
+
+
+/*Galeria Pública*/
+document.addEventListener('DOMContentLoaded', function () {
+
+    const modal = document.getElementById('imageModal');
+
+    if (!modal) {
+        return;
+    }
+
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+
+    const closeButton = document.getElementById('imageModalClose');
+    const backdrop = modal.querySelector('.image-modal-backdrop');
+
+    const storyImages = document.querySelectorAll('.story-image');
+
+
+    // ==========================================
+    // Abrir modal
+    // ==========================================
+
+    function openModal(storyImage) {
+
+        const image = storyImage.dataset.image;
+        const title = storyImage.dataset.title || '';
+        const description = storyImage.dataset.description || '';
+
+        modalImage.src = image;
+        modalImage.alt = title;
+
+        modalTitle.textContent = title;
+
+        // Mostra a descrição somente dentro do modal
+        modalDescription.textContent = description;
+
+        // Esconde o <p> se não houver descrição
+        if (description.trim() === '') {
+            modalDescription.style.display = 'none';
+        } else {
+            modalDescription.style.display = 'block';
+        }
+
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+
+        document.body.classList.add('modal-open');
+
+        // Coloca o foco no botão de fechar
+        closeButton.focus();
+    }
+
+
+    // ==========================================
+    // Fechar modal
+    // ==========================================
+
+    function closeModal() {
+
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+
+        document.body.classList.remove('modal-open');
+
+        // Limpa a imagem para evitar que fique carregada
+        modalImage.src = '';
+        modalImage.alt = '';
+
+        modalTitle.textContent = '';
+        modalDescription.textContent = '';
+    }
+
+
+    // ==========================================
+    // Clique nas imagens
+    // ==========================================
+
+    storyImages.forEach(function (storyImage) {
+
+        storyImage.addEventListener('click', function () {
+            openModal(this);
+        });
+
+
+        // Permite abrir com Enter ou Espaço
+        storyImage.addEventListener('keydown', function (event) {
+
+            if (event.key === 'Enter' || event.key === ' ') {
+
+                event.preventDefault();
+
+                openModal(this);
+            }
+
+        });
+
+    });
+
+
+    // ==========================================
+    // Botão X
+    // ==========================================
+
+    closeButton.addEventListener('click', closeModal);
+
+
+    // ==========================================
+    // Clique fora do conteúdo
+    // ==========================================
+
+    backdrop.addEventListener('click', closeModal);
+
+
+    // ==========================================
+    // Tecla ESC
+    // ==========================================
+
+    document.addEventListener('keydown', function (event) {
+
+        if (
+            event.key === 'Escape' &&
+            modal.classList.contains('active')
+        ) {
+            closeModal();
+        }
+
+    });
+
+});

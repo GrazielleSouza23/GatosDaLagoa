@@ -72,6 +72,7 @@
     </div>
 </section>
 
+<!--- Adoção --->
 <section class="adoption-section" id="adocao">
     <div class="container">
         <div class="adoption-content">
@@ -104,10 +105,12 @@
     </div>
 </section>
 
-<svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="margin-top: -97px;">
+<!--- Onda entre Adoção e Histórias--->
+<svg class="adoption-wave" viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0,50 C200,100 400,20 600,70 C800,120 1000,40 1200,90 L1200,120 L0,120 Z" fill="#ffffff"></path>
 </svg>
 
+<!--- Histórias de Sucesso --->
 <section class="success-stories">
     <div class="container">
         <div class="section-header">
@@ -126,14 +129,8 @@
                     </div>
                     <div class="story-content">
                         <h3 class="story-title"><?php echo e($historia['nome_gato']); ?></h3>
-                        <?php if (!empty($historia['idade'])): ?>
-                            <p class="story-text"><strong>Idade: </strong><?php echo e($historia['idade']); ?></p><br>
-                        <?php endif; ?>
                         <?php if (!empty($historia['descricao'])): ?>
                             <p class="story-text"><?php echo e($historia['descricao']); ?></p><br>
-                        <?php endif; ?>
-                        <?php if (!empty($historia['historia'])): ?>
-                            <p class="story-text"><strong>História: </strong><?php echo e($historia['historia']); ?></p><br>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -142,10 +139,13 @@
     </div>
 </section>
 
-<svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(180deg); margin-bottom: -40px;">
-    <path d="M0,50 C200,100 400,20 600,70 C800,120 1000,40 1200,90 L1200,120 L0,120 Z" fill="#ffffff"></path>
+<!-- Onda entre Histórias e Contatos -->
+<svg class="stories-wave" viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,70 C200,20 400,100 600,50 C800,0 1000,80 1200,30 L1200,0 L0,0 Z" fill="#ffffff"></path>
 </svg>
 
+
+<!--- Contatos --->
 <section class="contact-section">
     <div class="container">
         <div class="contact-grid">

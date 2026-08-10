@@ -27,6 +27,9 @@
 
 html {
     scroll-behavior: smooth;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -34,6 +37,8 @@ body {
     color: var(--color-dark);
     line-height: 1.6;
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
 }
 
 .container {
@@ -64,9 +69,12 @@ a {
     top: 0;
     z-index: 1000;
     transition: var(--transition);
+    margin: 0;
+    padding: 0;
 }
 
 .header-container {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 15px 20px;
@@ -146,6 +154,7 @@ a {
     background: linear-gradient(135deg, #e8f8f5 0%, #f0fdf4 100%);
     padding: 100px 0 150px;
     overflow: hidden;
+    margin-top: 0;
 }
 
 .hero-wave-top {
@@ -176,7 +185,9 @@ a {
     height: 100%;
 }
 
+
 .hero-content {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -716,23 +727,38 @@ a {
 /* ===================================
    Histórias de Sucesso
    =================================== */
+
+/* ===================================
+   Onda entre Adoção e Histórias
+=================================== */
+
+.adoption-wave {
+    display: block;
+    width: 100%;
+    height: 120px;
+    margin-top: -120px;
+    margin-bottom: -10px;
+    position: relative;
+    z-index: 5;
+}
+
+/* Histórias de Sucesso */
 .success-stories {
+    position: relative;
+    z-index: 1;
+    margin-top: 0;
     padding: 100px 0;
     background: var(--color-white);
-    position: relative;
 }
 
 .stories-wave {
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    display: block;
     width: 100%;
     height: 120px;
-}
-
-.stories-wave svg {
-    width: 100%;
-    height: 100%;
+    margin-bottom: -120px;
+    margin-top: -10px;
+    position: relative;
+    z-index: 5;
 }
 
 .stories-carousel {
@@ -752,19 +778,6 @@ a {
 .story-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-}
-
-.story-image {
-    width: 100%;
-    height: 280px;
-    overflow: hidden;
-}
-
-.story-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: var(--transition);
 }
 
 .no-image {
@@ -800,10 +813,367 @@ a {
     margin-bottom: 15px;
 }
 
+.story-description {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #666;
+}
+
 .story-text {
     font-size: 16px;
     color: var(--color-gray);
     line-height: 1.8;
+}
+
+/* ===================================
+   Galeria Pública - Imagens
+=================================== */
+
+.story-image {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.story-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* Efeito ao passar o mouse */
+
+.story-image:hover img {
+    transform: scale(1.08);
+}
+
+
+/* ===================================
+   Overlay da imagem
+=================================== */
+
+.story-image-overlay {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    color: var(--color-white);
+
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    pointer-events: none;
+}
+
+.story-image:hover .story-image-overlay {
+    opacity: 1;
+}
+
+.story-image-icon {
+    font-size: 32px;
+}
+
+.story-image-text {
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+/* ===================================
+   Acessibilidade
+=================================== */
+
+.story-image:focus {
+    outline: 3px solid var(--color-primary);
+    outline-offset: -3px;
+}
+
+
+/* ===================================
+   Modal da Galeria
+=================================== */
+
+.image-modal {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background: rgba(0, 0, 0, 0.82);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+
+    z-index: 9999;
+}
+
+.image-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* Fundo do modal */
+
+.image-modal-backdrop {
+    position: absolute;
+    inset: 0;
+
+    cursor: pointer;
+}
+
+
+/* ===================================
+   Conteúdo do modal
+=================================== */
+
+.image-modal-content {
+    position: relative;
+
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+
+    background: var(--color-white);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.35);
+
+    transform: scale(0.92) translateY(20px);
+
+    transition: transform 0.3s ease;
+
+    z-index: 1;
+}
+
+.image-modal.active .image-modal-content {
+    transform: scale(1) translateY(0);
+}
+
+
+/* ===================================
+   Área da imagem
+=================================== */
+
+.modal-image-wrapper {
+    width: 100%;
+
+    max-height: 65vh;
+
+    background: #111;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-image {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+
+    max-height: 65vh;
+
+    object-fit: contain;
+}
+
+
+/* ===================================
+   Informações da imagem
+=================================== */
+
+.modal-info {
+    padding: 25px 30px;
+
+    background: var(--color-white);
+}
+
+.modal-info h2 {
+    font-family: var(--font-heading);
+
+    font-size: 25px;
+    font-weight: 600;
+
+    color: var(--color-primary);
+
+    margin: 0 0 10px;
+}
+
+.modal-info p {
+    font-family: var(--font-body);
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    color: var(--color-gray);
+
+    margin: 0;
+}
+
+
+/* ===================================
+   Botão fechar
+=================================== */
+
+.image-modal-close {
+    position: absolute;
+
+    top: 12px;
+    right: 15px;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    color: var(--color-white);
+
+    font-size: 30px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    z-index: 5;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.image-modal-close:hover {
+    background: var(--color-danger);
+
+    transform: rotate(90deg);
+}
+
+
+/* Impede a página de rolar enquanto o modal está aberto */
+
+body.modal-open {
+    overflow: hidden;
+}
+
+
+/* ===================================
+   Responsividade
+=================================== */
+
+@media (max-width: 768px) {
+
+    .story-image {
+        height: 250px;
+    }
+
+    .image-modal {
+        padding: 15px;
+    }
+
+    .image-modal-content {
+        max-height: 92vh;
+
+        border-radius: 15px;
+    }
+
+    .modal-image-wrapper {
+        max-height: 55vh;
+    }
+
+    .modal-image {
+        max-height: 55vh;
+    }
+
+    .modal-info {
+        padding: 20px;
+    }
+
+    .modal-info h2 {
+        font-size: 21px;
+    }
+
+    .modal-info p {
+        font-size: 15px;
+    }
+
+    .image-modal-close {
+        width: 38px;
+        height: 38px;
+
+        top: 10px;
+        right: 10px;
+
+        font-size: 26px;
+    }
+
+}
+
+
+/* ===================================
+   Celulares pequenos
+=================================== */
+
+@media (max-width: 480px) {
+
+    .story-image {
+        height: 220px;
+    }
+
+    .image-modal {
+        padding: 10px;
+    }
+
+    .modal-image-wrapper {
+        max-height: 50vh;
+    }
+
+    .modal-image {
+        max-height: 50vh;
+    }
+
+    .modal-info {
+        padding: 18px;
+    }
+
+    .modal-info h2 {
+        font-size: 19px;
+    }
+
+    .modal-info p {
+        font-size: 14px;
+    }
+
 }
 
 /* ============================
@@ -812,10 +1182,10 @@ a {
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    justify-content: center;        /* Centraliza os cards */
+    justify-content: center;
     gap: 25px;
     margin-top: 30px;
-    max-width: 1200px;              /* Limita a largura total */
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -944,49 +1314,87 @@ a {
     white-space: nowrap;       /* Não quebrar texto */
 }
 
-
 /* ===================================
    Seção de Contato
-   =================================== */
+=================================== */
+
 .contact-section {
+    width: 100%;
+    max-width: 100%;
     padding: 100px 0;
+    position: relative;
+    overflow: hidden;
     background: linear-gradient(135deg, #f0fdf4 0%, #e8f8f5 100%);
+    z-index: 1;
+}
+
+.contact-section .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .contact-grid {
+    width: 100%;
+    max-width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 60px;
+    align-items: center;
+}
+
+/* ---------- Informações ---------- */
+
+.contact-info {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
 }
 
 .contact-description {
-    font-size: 18px;
-    color: var(--color-gray);
-    margin-bottom: 40px;
-    line-height: 1.8;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    margin-bottom: 35px;
 }
 
 .contact-items {
+    width: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 28px;
 }
 
 .contact-item {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
     display: flex;
-    gap: 20px;
     align-items: flex-start;
+    gap: 18px;
 }
 
 .contact-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #e8f8f5, #f0fdf4);
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+    flex: 0 0 30px;
+    width: 30px;
+    height: 30px;
+}
+
+.contact-icon svg {
+    display: block;
+    width: 30px;
+    height: 30px;
+    max-width: 30px;
+}
+
+.contact-details {
+    min-width: 0;
+    max-width: 100%;
+    flex: 1;
 }
 
 .contact-details h4 {
@@ -994,52 +1402,253 @@ a {
     font-size: 20px;
     font-weight: 600;
     color: var(--color-dark);
-    margin-bottom: 8px;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
 }
 
 .contact-details p,
 .contact-details a {
+    display: block;
+    margin: 0;
     font-size: 16px;
     color: var(--color-gray);
     line-height: 1.6;
+
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .contact-details a:hover {
     color: var(--color-primary);
 }
 
+/* ---------- Redes sociais ---------- */
+
 .social-links {
     display: flex;
-    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    max-width: 100%;
 }
 
 .social-links a {
-    width: 48px;   /* tamanho final igual para todos */
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
+    display: inline-flex;
+    flex-shrink: 0;
 }
 
-.social-links img {
-    max-width: 100%;
-    max-height: 100%;
+/* Mantém o tamanho original */
+.social-icon {
+    max-width: none;
     object-fit: contain;
     display: block;
 }
+/* ---------- Mapa ---------- */
 
-
-.social-links a:hover {
-    color: var(--color-secondary);
+.contact-map {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
 }
 
 .contact-map iframe {
+    display: block;
     width: 100%;
-    height: 100%;
+    max-width: 100%;
     min-height: 400px;
+    height: 450px;
+    border: 0;
 }
 
+/* ===================================
+   TABLET
+=================================== */
+
+@media (max-width: 900px) {
+
+    .contact-section {
+        padding: 80px 0;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .contact-items {
+        gap: 30px;
+    }
+
+    .contact-info {
+        width: 100%;
+    }
+
+    .contact-map {
+        width: 100%;
+    }
+
+    .contact-map iframe {
+        width: 100%;
+        height: 400px;
+        min-height: 350px;
+    }
+}
+
+/* ===================================
+   CELULAR
+=================================== */
+
+@media (max-width: 600px) {
+
+    .contact-section {
+        padding: 60px 0;
+    }
+
+    .contact-section .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .contact-grid {
+        width: 100%;
+        gap: 45px;
+    }
+
+    .contact-info {
+        width: 100%;
+    }
+
+    .contact-description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* Mais espaço entre Email,
+       Telefone, Localização e Redes */
+    .contact-items {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .contact-item {
+        gap: 16px;
+        align-items: flex-start;
+    }
+
+    .contact-icon {
+        flex: 0 0 30px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .contact-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .contact-details {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .contact-details h4 {
+        font-size: 18px;
+        margin: 0 0 8px 0;
+        line-height: 1.4;
+    }
+
+    .contact-details p,
+    .contact-details a {
+        font-size: 15px;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* Redes sociais continuam com o tamanho original */
+    .social-links {
+        gap: 12px;
+    }
+
+    .social-icon {
+        width: 35px;
+        height: 35px;
+        max-width: none;
+    }
+
+    .contact-map {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .contact-map iframe {
+        width: 100%;
+        height: 320px;
+        min-height: 280px;
+        border-radius: 10px;
+    }
+}
+
+/* ===================================
+   CELULARES MUITO PEQUENOS
+=================================== */
+
+@media (max-width: 380px) {
+
+    .contact-section .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .contact-grid {
+        gap: 35px;
+    }
+
+    /* Mantém bom espaçamento mesmo em telas pequenas */
+    .contact-items {
+        gap: 28px;
+    }
+
+    .contact-item {
+        gap: 12px;
+    }
+
+    .contact-icon {
+        flex: 0 0 28px;
+        width: 28px;
+        height: 28px;
+    }
+
+    .contact-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .contact-details h4 {
+        font-size: 17px;
+        margin-bottom: 7px;
+    }
+
+    .contact-details p,
+    .contact-details a {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    /* Ícones das redes continuam proporcionais */
+    .social-icon {
+        width: 35px;
+        height: 35px;
+        max-width: none;
+    }
+
+    .contact-map iframe {
+        height: 280px;
+        min-height: 250px;
+    }
+}
 
 /* ===================================
    Ondulações/Ondas
@@ -1587,18 +2196,6 @@ a {
     }
 }
 
-@media (min-width: 1025px) {
-    .adoption-content.alternate-layout {
-        grid-template-columns: 1fr 1fr; /* Garante que em telas grandes tenha 2 colunas */
-    }
-    .adoption-content.alternate-layout > .adoption-text {
-        order: 1; /* Texto vem primeiro */
-    }
-    .adoption-content.alternate-layout > .adoption-image {
-        order: 2; /* Imagem vem depois */
-    }
-}
-
 /* ===================================
    Estilos para a Área Administrativa (ADMIN)
    =================================== */
@@ -1606,9 +2203,9 @@ a {
 /* Layout principal para o conteúdo administrativo */
 .main-content {
     width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 10px clamp(10px, 3vw, 10px);
+    max-width: none;
+    margin: 0;
+    padding: 0;
     min-height: calc(100vh - 90px);
     background-color: var(--color-light);
 }
@@ -1633,12 +2230,15 @@ a {
     }
 }
 
+/*Admin Usuário*/
+/* ======= Cabeçalho do administrador ======= */
 .admin-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+    gap: 12px;
+    margin-bottom: 25px;
 }
 
 .admin-title {
@@ -1678,18 +2278,6 @@ a {
         padding: 15px;
         border-radius: 10px;
     }
-}
-
-
-/*Admin Usuário*/
-/* ======= Cabeçalho do administrador ======= */
-.admin-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap; /* Permite quebrar linha em telas menores */
-    gap: 12px;
-    margin-bottom: 25px;
 }
 
 /* Card do administrador */
@@ -2103,11 +2691,6 @@ a {
         background-color: #f8f8f8;
     }
 
-    /* Deixa o bloco mais organizado */
-    .form-group {
-        margin-bottom: 20px;
-    }
-
     /* Caso queira centralizar as imagens */
     .form-group img.preview-image {
         margin-left: 0;
@@ -2420,4 +3003,3 @@ a {
         order: 2;
     }
 }
-
