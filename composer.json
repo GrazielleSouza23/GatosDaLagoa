@@ -1,0 +1,16 @@
+{
+    "name": "grazielle-souza/gatos-da-lagoa",
+    "description": "Sistema web institucional da ONG Gatos da Lagoa Taquaral",
+    "type": "project",
+    "require": {
+        "php": "^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "app/Helpers/functions.php"
+        ]
+    }
+}

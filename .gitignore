@@ -1,16 +1,15 @@
 # ===============================
-#  GATOS DA LAGOA — .gitignore
-#  Site PHP + MySQL + Admin Panel
+# GATOS DA LAGOA — .gitignore
+# Projeto PHP + MVC + API REST
 # ===============================
 
 # -------------------------------
-# SISTEMA / ARQUIVOS DO WINDOWS
+# Composer
 # -------------------------------
-.DS_Store
-Thumbs.db
+/vendor/
 
 # -------------------------------
-# PHP / CONFIGURAÇÕES SENSÍVEIS
+# Configurações sensíveis
 # -------------------------------
 .env
 .env.local
@@ -18,44 +17,32 @@ Thumbs.db
 .env.development
 
 # -------------------------------
-# LOGS / CACHE
+# Logs
 # -------------------------------
-*.log
-*.cache
+/storage/logs/*.log
+!/storage/logs/.gitkeep
+
+# -------------------------------
+# Uploads enviados em produção
+# -------------------------------
+# Mantemos as imagens de exemplo atualmente versionadas.
+# Descomente para ignorar novos uploads:
+# /public/assets/images/uploads/*
+
+# -------------------------------
+# Sistema / Windows
+# -------------------------------
+.DS_Store
+Thumbs.db
+
+# -------------------------------
+# IDEs / Editores
+# -------------------------------
+/.vscode/
+/.idea/
+
+# -------------------------------
+# Arquivos temporários
+# -------------------------------
 *.tmp
-php_errors.log
-logs/
-
-# -------------------------------
-# UPLOADS (NÃO SUBIR FOTOS)
-# -------------------------------
-assets/images/uploads/*
-
-# Permitir que o diretório exista
-!assets/images/uploads/.gitkeep
-
-# -------------------------------
-# BANCO DE DADOS
-# -------------------------------
-# Ignore apenas backups e dumps automáticos
-database/*.bak
-database/*.db
-database/*dump*.sql
-
-# -------------------------------
-# IDEs / EDITORES
-# -------------------------------
-.vscode/
-.idea/
-*.code-workspace
-
-# -------------------------------
-# COMPOSER (caso use no futuro)
-# -------------------------------
-vendor/
-composer.lock
-
-# -------------------------------
-# NODE (caso use no futuro)
-# -------------------------------
-node_modules/
+*.cache

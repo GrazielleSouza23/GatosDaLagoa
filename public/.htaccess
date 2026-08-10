@@ -1,0 +1,20 @@
+RewriteEngine On
+
+# ---------- API REST (/api/v1/...) ----------
+RewriteCond %{REQUEST_URI} ^/api/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ api/index.php [L]
+
+# ---------- Site público e Admin ----------
+# Não reescreve requisições para arquivos ou pastas existentes (assets, etc.)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L]
+
+# Segurança básica
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+</IfModule>
+
+# Impede listagem de diretórios
+Options -Indexes

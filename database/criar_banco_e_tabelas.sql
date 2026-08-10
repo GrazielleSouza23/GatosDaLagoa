@@ -1,4 +1,29 @@
 -- ========================================
+-- Script de Criação do Banco de Dados
+-- Projeto: ONG Gatos da Lagoa Taquaral
+-- Tecnologia: MySQL 8.0
+-- ========================================
+
+-- Criar banco de dados
+CREATE DATABASE IF NOT EXISTS ong_gatos_taquaral
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+-- Usar o banco de dados
+USE ong_gatos_taquaral;
+
+-- Criar usuário (caso não exista)
+CREATE USER IF NOT EXISTS 'gatos'@'localhost' IDENTIFIED BY 'root';
+
+-- Dar permissões completas no banco
+GRANT ALL PRIVILEGES ON ong_gatos_taquaral.* TO 'gatos'@'localhost';
+
+-- Mensagem de confirmação
+SELECT 'Banco de dados criado com sucesso!' AS Mensagem;
+
+USE ong_gatos_taquaral;
+
+-- ========================================
 -- TABELA: administradores
 -- Descrição: Armazena os usuários administradores do sistema
 -- ========================================
@@ -33,9 +58,9 @@ CREATE TABLE IF NOT EXISTS eventos (
     INDEX idx_data_evento (data_evento),
     INDEX idx_ativo (ativo),
     INDEX idx_admin_id (admin_id),
-    CONSTRAINT fk_eventos_admin FOREIGN KEY (admin_id) 
-        REFERENCES administradores(id) 
-        ON DELETE SET NULL 
+    CONSTRAINT fk_eventos_admin FOREIGN KEY (admin_id)
+        REFERENCES administradores(id)
+        ON DELETE SET NULL
         ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -59,9 +84,9 @@ CREATE TABLE IF NOT EXISTS historias_sucesso (
     INDEX idx_nome_gato (nome_gato),
     INDEX idx_ativo (ativo),
     INDEX idx_admin_id (admin_id),
-    CONSTRAINT fk_historias_admin FOREIGN KEY (admin_id) 
-        REFERENCES administradores(id) 
-        ON DELETE SET NULL 
+    CONSTRAINT fk_historias_admin FOREIGN KEY (admin_id)
+        REFERENCES administradores(id)
+        ON DELETE SET NULL
         ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -82,9 +107,9 @@ CREATE TABLE IF NOT EXISTS galeria (
     INDEX idx_categoria (categoria),
     INDEX idx_ativo (ativo),
     INDEX idx_admin_id (admin_id),
-    CONSTRAINT fk_galeria_admin FOREIGN KEY (admin_id) 
-        REFERENCES administradores(id) 
-        ON DELETE SET NULL 
+    CONSTRAINT fk_galeria_admin FOREIGN KEY (admin_id)
+        REFERENCES administradores(id)
+        ON DELETE SET NULL
         ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -120,7 +145,7 @@ CREATE TABLE IF NOT EXISTS redes_sociais (
     chave VARCHAR(255) NOT NULL UNIQUE,      -- identificador único (ex: youtube, instagram, tiktok)
     icone VARCHAR(255) NOT NULL,             -- imagem do icone
     link VARCHAR(600) NOT NULL,               -- link da rede social
-    data_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP 
+    data_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP
         ON UPDATE CURRENT_TIMESTAMP,
     INDEX idx_chave (chave)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -139,7 +164,7 @@ INSERT IGNORE INTO administradores (email, senha, nome, data_criacao, ativo) VAL
 );
 
 -- Configurações do sistema
-INSERT IGNORE INTO configuracoes (chave, valor, descricao) VALUES 
+INSERT IGNORE INTO configuracoes (chave, valor, descricao) VALUES
     ('site_titulo', 'ONG - Gatos da Lagoa do Taquaral', 'Título principal do site'),
     ('site_descricao', 'Somos um grupo de cidadãos unidos pelo bem estar e cuidado dos gatos que vivem no Parque Portugal, em Campinas, SP. Juntos, alimentamos, castramos e promovemos adoções responsáveis.', 'Descrição principal do site'),
     ('email_contato', 'gatosdalagoacampinas@gmail.com', 'Email de contato da ONG'),
@@ -212,40 +237,40 @@ INSERT INTO redes_sociais (chave, icone, link) VALUES
     ('facebook', 'facebook.png', 'https://facebook.com/GatosDaLagoaTaquaral');
 
 -- Eventos de exemplo
-INSERT INTO eventos (titulo, descricao, data_evento, hora_evento, local_evento, admin_id) VALUES 
-    ('Feira de Adoção', 
-     'Feira com produtos como panos decorativos, camisetas exclusivas e cadernos personalizados. Cada compra ajuda nosso projeto de adoção de gatinhos.', 
-     '2025-05-17', 
-     '09:00', 
-     'Concha Acústica do Taquaral', 
+INSERT INTO eventos (titulo, descricao, data_evento, hora_evento, local_evento, admin_id) VALUES
+    ('Feira de Adoção',
+     'Feira com produtos como panos decorativos, camisetas exclusivas e cadernos personalizados. Cada compra ajuda nosso projeto de adoção de gatinhos.',
+     '2025-05-17',
+     '09:00',
+     'Concha Acústica do Taquaral',
      1),
-    ('11ª Mostra Jazz Campinas', 
-     'A ONG Gatos da Lagoa estará presente na 11ª Mostra Jazz Campinas, com música, solidariedade e artesanato. Evento gratuito e cheio de energia contagiante!', 
-     '2025-08-10', 
-     '15:00', 
-     'Concha Acústica do Taquaral - Parque Portugal', 
+    ('11ª Mostra Jazz Campinas',
+     'A ONG Gatos da Lagoa estará presente na 11ª Mostra Jazz Campinas, com música, solidariedade e artesanato. Evento gratuito e cheio de energia contagiante!',
+     '2025-08-10',
+     '15:00',
+     'Concha Acústica do Taquaral - Parque Portugal',
      1),
-    ('+1 Baile 0800 na Concha', 
-     'Evento gratuito com música, cultura de rua e artesanato. A ONG Gatos da Lagoa estará presente com produtos especiais para apoiar os gatinhos do Parque Taquaral.', 
-     '2025-08-31', 
-     '14:00', 
-     'Concha Acústica do Taquaral', 
+    ('+1 Baile 0800 na Concha',
+     'Evento gratuito com música, cultura de rua e artesanato. A ONG Gatos da Lagoa estará presente com produtos especiais para apoiar os gatinhos do Parque Taquaral.',
+     '2025-08-31',
+     '14:00',
+     'Concha Acústica do Taquaral',
      1);
 
 -- Histórias de sucesso de exemplo
 INSERT INTO historias_sucesso (nome_gato, descricao, imagem, admin_id)
-VALUES 
-    ('Guida', 
+VALUES
+    ('Guida',
      'Guida foi encontrada com tumor em toda a arcada mamária. Guida passou por cirurgia de retirada do tumor e foi adotada em 2024. Hoje está bem gordinha e foi descoberto um câncer.',
-     'Guida.jpg', 
+     'Guida.jpg',
      1),
-    ('Vivara', 
+    ('Vivara',
      'Vivara (à direita), encontrada grávida, hoje está adotada e tem um irmão preto também.',
-     'Vivara e irmao.jpg', 
+     'Vivara e irmao.jpg',
      1),
-    ('Casal de irmãos',  
+    ('Casal de irmãos',
      'Casal de irmãos encontrados com rinotraqueite, hoje estão adotados.',
-     'Casal de irmaos.jpg', 
+     'Casal de irmaos.jpg',
      1);
 
 -- Mensagem de confirmação

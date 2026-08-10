@@ -1,5 +1,0 @@
-# Ativar o motor de reescrita de URL
-RewriteEngine On
-
-# Configurar a página de erro 404
-ErrorDocument 404 /404.php
