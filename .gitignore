@@ -15,6 +15,7 @@
 .env.local
 .env.production
 .env.development
+/config/env.php
 
 # -------------------------------
 # Logs

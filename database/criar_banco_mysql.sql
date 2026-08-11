@@ -12,8 +12,13 @@ COLLATE utf8mb4_unicode_ci;
 -- Usar o banco de dados
 USE ong_gatos_taquaral;
 
--- Criar usuário (caso não exista)
-CREATE USER IF NOT EXISTS 'gatos'@'localhost' IDENTIFIED BY 'root';
+
+-- Crie o usuário manualmente no ambiente de instalação
+-- usando uma senha segura e específica para o ambiente.
+
+-- Exemplo:
+--CREATE USER IF NOT EXISTS 'gatos'@'localhost' IDENTIFIED BY 'SENHA_SEGURA_AQUI'; --Essas credenciais são apenas de EXEMPLO
+
 
 -- Dar permissões completas no banco
 GRANT ALL PRIVILEGES ON ong_gatos_taquaral.* TO 'gatos'@'localhost';
